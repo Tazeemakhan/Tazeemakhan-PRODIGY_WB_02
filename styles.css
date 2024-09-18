@@ -1,0 +1,193 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #001520;
+    font-family: 'Poppins', sans-serif;
+}
+
+.title-section {
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+.animated-title {
+    font-size: 50px;
+    color: #ffffff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.animated-paragraph {
+    font-size: 40px;
+    color: #ffffffe8;
+    font-weight: bolder;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 4s ease-in-out forwards;
+    animation-delay: 2s;
+}
+
+.animated-underline {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    position: relative;
+    display: inline-block;
+}
+
+.animated-underline::after {
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 8px; /* Thickness of the underline */
+    background-color: red; /* Red underline */
+    bottom: -5px; /* Distance from the text */
+    left: 4;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease; /* Animation duration */
+ 
+}
+
+.animated-underline:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* Fade-in animation for both title and paragraph */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styling for timer and buttons */
+.container {
+    text-align: center;
+}
+
+.timer {
+    font-size: 80px;
+    color: #fff;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timer span {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.hours {
+    color: #ff4b4b; /* Red color for hours */
+}
+
+.minutes {
+    color: #00d9ff; /* Blue color for minutes */
+}
+
+.seconds {
+    color: #f0e130; /* Yellow color for seconds */
+}
+
+/* Reflection Effect */
+.timer:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scaleY(-1);
+    filter: blur(4px);
+    opacity: 0.4;
+    animation: reflectionGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.363), 0 0 20px rgba(255, 255, 255, 0.349);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.37), 0 0 40px rgba(255, 255, 255, 0.315);
+    }
+}
+
+@keyframes reflectionGlow {
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 0.1;
+    }
+}
+
+/* Control Buttons Styling */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.control-btn {
+    background: none;
+    border: 5px solid white;
+    border-radius: 10%;
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.start {
+    border-color: #00d9ff;
+    color: #00d9ff;
+}
+
+.pause {
+    border-color: #ff4b4b;
+    color: #ff0000;
+}
+
+.reset {
+    border-color: #f0e130;
+    color: #f0e130;
+}
+
+.control-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
